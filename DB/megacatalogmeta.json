@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1789216909054",
+    "slug": "ajazz-ak650",
+    "name": "AJAZZ AK650",
+    "category": "Keyboards",
+    "price": "2600৳  – 3300৳",
+    "score": "8.4",
+    "image": "https://ajazzstore.com/cdn/shop/files/IMG_2750.png?v=1731552274",
+    "hotDeal": false,
+    "description": "The AJAZZ AK650 punches way above its weight class, offering premium features like a flex-cut polycarbonate plate, 5-pin hot-swappable PCB, and a rare display and slider combo in a tight 65% form factor. An absolute dream for Windows users on a budget.",
+    "specs": "Layout: 65%\n\nMounting Style: Gasket Mount (Silicon jackets with flex-cut PC plate)\n\nConnectivity: Tri-Mode (Wired, 2.4GHz, Bluetooth)\n\nBattery Capacity: 5000 mAh\n\nSwitches: Huano Dreamweaving or Flying Fish (Linear, Factory Lubed)\n\nPCB: 5-Pin Hot-Swappable, South-facing RGB, 1.2mm flex cut\n\nKeycaps: Double-shot PBT (Cherry Profile)\n\nPolling Rate: 1000Hz (Wired/2.4GHz), 125Hz (Bluetooth)",
+    "shard": "shard-1.json"
+  }
+]
