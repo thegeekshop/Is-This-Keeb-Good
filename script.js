@@ -206,13 +206,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (document.getElementById('login-section')) {
     const loginSec = document.getElementById('login-section');
     const dashSec = document.getElementById('dashboard-section');
+    const conf = getGHConfig();
     
-    if (getGHConfig().pat) {
-      loginSec.classList.add('hidden');
-      dashSec.classList.remove('hidden');
-      document.getElementById('logout-btn').classList.remove('hidden');
-      renderShimmer('admin-products-list', 5, 'list');
-      fetchFile(META_FILE).then(renderAdminList);
+    // Validate token existence AND authenticity before revealing UI
+    if (conf.pat) {
+      fetch(`https://api.github.com/repos/${conf.owner}/${conf.repo}`, {
+        headers: { 'Authorization': `token ${conf.pat}`, 'Accept': 'application/vnd.github.v3+json' }
+      }).then(res => {
+        if (res.ok) {
+          // Token is valid: Reveal Dashboard
+          loginSec.classList.add('hidden');
+          dashSec.classList.remove('hidden');
+          document.getElementById('logout-btn').classList.remove('hidden');
+          renderShimmer('admin-products-list', 5, 'list');
+          fetchFile(META_FILE).then(renderAdminList);
+        } else {
+          // Token is invalid: Purge and stay on login screen
+          localStorage.removeItem('gh_pat');
+          showToast("Invalid or expired GitHub Token.");
+        }
+      }).catch(() => showToast("Network error checking token."));
     }
 
     const replaceDoubleSpace = function(e) {
@@ -225,10 +238,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('p-merchants')?.addEventListener('input', replaceDoubleSpace);
     document.getElementById('p-author-socials')?.addEventListener('input', replaceDoubleSpace);
 
-    document.getElementById('login-form').addEventListener('submit', (e) => {
+    // Update the login form to validate BEFORE saving to localStorage
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-      localStorage.setItem('gh_pat', document.getElementById('gh-pat').value.trim());
-      window.location.reload();
+      const token = document.getElementById('gh-pat').value.trim();
+      const btn = e.target.querySelector('button');
+      const originalText = btn.innerText || "Login";
+      
+      if (btn) btn.innerText = "Verifying...";
+      
+      try {
+        const res = await fetch(`https://api.github.com/repos/${conf.owner}/${conf.repo}`, {
+          headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        
+        if (res.ok) {
+          localStorage.setItem('gh_pat', token);
+          window.location.reload();
+        } else {
+          showToast("Access Denied: Invalid PAT");
+          if (btn) btn.innerText = originalText;
+        }
+      } catch (err) {
+        showToast("Network Error verifying token.");
+        if (btn) btn.innerText = originalText;
+      }
     });
 
     document.getElementById('logout-btn').addEventListener('click', () => {
