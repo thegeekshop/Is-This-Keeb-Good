@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1789216909054",
+    "name": "AJAZZ AK650",
+    "category": "Keyboards",
+    "price": "2600৳  – 3300৳",
+    "score": "8.4",
+    "pros": [
+      "Incredible value for the $50 price point",
+      "Rare LCD display and tactile volume slider on a 65% layout",
+      "Excellent, thocky acoustic profile right out of the box (no modding needed)",
+      "Tri-mode wireless connectivity with a massive 5000 mAh battery",
+      "High-quality double-shot PBT keycaps and factory-lubed switches"
+    ],
+    "cons": [
+      "No QMK/VIA support (Proprietary software is Windows-only)",
+      "Lack of tactile switch options currently available",
+      "LCD display could show more detailed system information"
+    ],
+    "verdict": "For $50, the AJAZZ AK650 is a feature-packed monster. It punches way above its weight class by seamlessly cramming an LCD display and a volume slider into a compact 65% layout without sacrificing typing quality or acoustic performance. While the lack of QMK/VIA support is a significant bummer for Mac and Linux power users, Windows users looking for a versatile, wireless, and great-sounding board right out of the box will find this to be an absolute no-brainer. It effectively carves out its own niche, offering features the competition simply hasn't matched at this price.",
+    "description": "Card Description (Short) A feature-packed 65% budget mechanical keyboard boasting a gasket mount, tri-mode wireless, a unique LCD display, and an ergonomic volume slider for just $50.",
+    "metaDescription": "The AJAZZ AK650 punches way above its weight class, offering premium features like a flex-cut polycarbonate plate, 5-pin hot-swappable PCB, and a rare display and slider combo in a tight 65% form factor. An absolute dream for Windows users on a budget.",
+    "detailedDescription": "<div class=\"detailed-review\">\n    <h2>AJAZZ AK650 Detailed Review</h2>\n    \n    <p>If there is a Swiss Army Knife of mechanical keyboards, the AJAZZ AK650 might just be it. We are talking about a keyboard that features a gasket mount, tri-mode wireless connectivity, a hot-swap PCB, double-shot PBT keycaps, great switches, and—best of all—a built-in display and volume slider. All of this comes in at just 50 bucks (approx. 6,500 BDT). Positioned as AJAZZ's brand new 65% keyboard, it brings tier-one specifications across all fronts into a budget-friendly package.</p>\n\n    <h3>Design & Build Quality</h3>\n    <p>The case is constructed from durable ABS plastic with smooth rounded corners and a subtle gradient back. Up at the top right, we get a unique display and knob combo that you rarely see on tight form-factor boards. It comes in two colorways and keycap options: side-printed shine-through or non-shine-through cherry-profile PBT keycaps. Both are double-shot with decent thickness, making them feel great to type on while looking sharp. Normally, fitting a display and a knob onto a cramped 65% keyboard forces you to lose at least two keys. To solve this, AJAZZ integrated an 0.85-inch LCD display at the top right corner right next to a slim, ergonomic volume slider. The volume slider feels satisfying with clear tactile feedback when adjusted.</p>\n\n    <h3>Display & Customization</h3>\n    <p>The built-in display shows the time, date, battery life, and connection mode, while also letting you navigate settings like pairing or RGB adjustments. For an extra bit of flair, you can upload your own custom GIFs using the proprietary Windows software. While the software lets you remap secondary layers, set macros, and control the vibrant RGB lighting, it is strictly Windows-only. There is a native Mac mode on the hardware level, but the lack of QMK, VIA, or a web-based software solution means Mac and Linux users will struggle to remap secondary layers—a major feature needed on a 65% layout.</p>\n\n    <h3>Internal Structure & Typing Experience</h3>\n    <p>Under the hood, the AK650 uses a gasket mount design with silicon gasket jackets on a flex-cut polycarbonate plate. These jackets suspend the plate and PCB assembly to deliver an even, cushioned sound profile across the board. You get a 5-pin hot-swap PCB featuring south-facing RGB LEDs compatible with all standard MX-style switches. The 1.2mm flex-cut PCB uses high-quality flush sockets that greatly minimize the chance of shorting.</p>\n    \n    <p>For switches, you have two linear options: <strong>Dreamweaving</strong> and <strong>Flying Fish</strong> (AJAZZ's own switches manufactured by Huano). Both are decently factory-lubed, smooth, and balanced nicely for gaming and typing. Combined with the board's internal foams and tuned stabilizers, it sounds remarkably \"thocky\" and deep right out of the box with zero modding required. If you are curious enough to open it up, you can easily pop open the top and bottom frames with a prying tool.</p>\n\n    <h3>Connectivity & Battery Life</h3>\n    <p>Powered by a massive 5000 mAh battery, the keyboard offers great endurance. You can expect around 150 hours of use on Bluetooth with RGB turned off, or roughly 25 hours with full RGB in 2.4GHz wireless mode. The polling rate reaches a responsive 1000Hz on Wired and 2.4GHz modes, dropping to 125Hz in Bluetooth mode.</p>\n\n    <h3>Conclusion & Verdict</h3>\n    <p>For $50, the AJAZZ AK650 is a feature-packed monster that punches way above its weight class. If you are a Windows user looking for a compact, wireless board featuring a display and a volume slider, it's a complete no-brainer. However, power users on Mac or Linux should keep the software limitations in mind until AJAZZ rolls out a promised web-based solution.</p>\n</div>",
+    "specs": "Layout: 65%\n\nMounting Style: Gasket Mount (Silicon jackets with flex-cut PC plate)\n\nConnectivity: Tri-Mode (Wired, 2.4GHz, Bluetooth)\n\nBattery Capacity: 5000 mAh\n\nSwitches: Huano Dreamweaving or Flying Fish (Linear, Factory Lubed)\n\nPCB: 5-Pin Hot-Swappable, South-facing RGB, 1.2mm flex cut\n\nKeycaps: Double-shot PBT (Cherry Profile)\n\nPolling Rate: 1000Hz (Wired/2.4GHz), 125Hz (Bluetooth)",
+    "subScores": "Build Quality: 8/10\n\nFeatures: 10/10\n\nTyping Experience: 9/10\n\nSoftware Compatibility: 5/10\n\nValue for Money: 10/10",
+    "images": [
+      "https://ajazzstore.com/cdn/shop/files/IMG_2750.png?v=1731552274"
+    ],
+    "merchants": [
+      "Tech Diversity|https://techdiversitybd.com/ajazz-ak650-wired-mechanical-keyboard/?srsltid=AfmBOoqOUKNjG0J8xaSMZKJMFW40BS5Z7PbCKM0o13Y_kPyADDjUSBU_",
+      "EZ Gadgets|https://ggezgadgets.com/product/ajazz-ak650-wired-mechanical-keyboard/"
+    ],
+    "authorName": "SamBoga",
+    "authorImage": "https://yt3.googleusercontent.com/nZEp5XW4DPEZF_N2625fY4VgMjf7TMGbEgcL4zQdMaMkMkbzdEfKouccoiYjzwqWFycqiaa7Ag=s72-c-k-c0x00ffffff-no-rj",
+    "authorSocials": [
+      "Instagram|https://www.instagram.com/mr.boga38",
+      "Facebook|https://www.facebook.com/SamBoga2638/"
+    ],
+    "hotDeal": false,
+    "timestamp": 1789216909054
+  }
+]
