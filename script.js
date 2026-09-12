@@ -5,8 +5,8 @@ const META_FILE = `${DB_DIR}/megacatalogmeta.json`;
 function getGHConfig() {
   return {
     // REPLACED: Hardcoded owner and repo
-    owner: 'RabaRoro', 
-    repo: 'ass',
+    owner: 'thegeekshop', 
+    repo: 'Is-This-Keeb-Good',
     pat: localStorage.getItem('gh_pat')
   };
 }
