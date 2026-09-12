@@ -4,7 +4,6 @@ const META_FILE = `${DB_DIR}/megacatalogmeta.json`;
 
 function getGHConfig() {
   return {
-    // REPLACED: Hardcoded owner and repo
     owner: 'thegeekshop', 
     repo: 'Is-This-Keeb-Good',
     pat: localStorage.getItem('gh_pat')
@@ -24,18 +23,33 @@ async function fetchFile(filePath, forceRefresh = false) {
   if (!conf.owner || !conf.repo) return null;
 
   try {
-    const res = await fetch(`https://api.github.com/repos/${conf.owner}/${conf.repo}/contents/${filePath}`, {
-      headers: conf.pat ? { 'Authorization': `token ${conf.pat}`, 'Accept': 'application/vnd.github.v3+json' } : { 'Accept': 'application/vnd.github.v3+json' }
-    });
-    
-    if (res.status === 404) return [];
-    if (!res.ok) throw new Error(`GitHub fetch failed for ${filePath}`);
-    
-    const data = await res.json();
-    fileShas.set(filePath, data.sha);
-    const parsed = JSON.parse(base64ToUtf8(data.content));
-    fileCache.set(filePath, parsed);
-    return parsed;
+    if (conf.pat) {
+      // ADMIN MODE: Fetch via GitHub API to retrieve file SHAs for writing
+      const res = await fetch(`https://api.github.com/repos/${conf.owner}/${conf.repo}/contents/${filePath}`, {
+        headers: { 'Authorization': `token ${conf.pat}`, 'Accept': 'application/vnd.github.v3+json' },
+        cache: forceRefresh ? 'no-cache' : 'default'
+      });
+      
+      if (res.status === 404) return [];
+      if (!res.ok) throw new Error(`GitHub fetch failed for ${filePath}`);
+      
+      const data = await res.json();
+      fileShas.set(filePath, data.sha);
+      const parsed = JSON.parse(base64ToUtf8(data.content));
+      fileCache.set(filePath, parsed);
+      return parsed;
+    } else {
+      // PUBLIC MODE: Fetch directly via relative web paths (bypasses GitHub API limits)
+      const cacheBuster = forceRefresh ? `?t=${Date.now()}` : '';
+      const res = await fetch(`${filePath}${cacheBuster}`);
+      
+      if (res.status === 404) return [];
+      if (!res.ok) throw new Error(`Static fetch failed for ${filePath}`);
+      
+      const parsed = await res.json();
+      fileCache.set(filePath, parsed);
+      return parsed;
+    }
   } catch (err) {
     console.error(err);
     return [];
@@ -87,7 +101,6 @@ function showToast(message) {
   }, 2500);
 }
 
-// Shimmer UI Animation Engine
 function renderShimmer(containerId, count = 8, type = 'card') {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -212,14 +225,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('p-merchants')?.addEventListener('input', replaceDoubleSpace);
     document.getElementById('p-author-socials')?.addEventListener('input', replaceDoubleSpace);
 
-    // REPLACED: Only store the PAT now
     document.getElementById('login-form').addEventListener('submit', (e) => {
       e.preventDefault();
       localStorage.setItem('gh_pat', document.getElementById('gh-pat').value.trim());
       window.location.reload();
     });
 
-    // REPLACED: Only remove the PAT now
     document.getElementById('logout-btn').addEventListener('click', () => {
       localStorage.removeItem('gh_pat');
       window.location.reload();
