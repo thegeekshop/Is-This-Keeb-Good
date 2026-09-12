@@ -24,5 +24,18 @@
     "description": "A detailed review of the Judicial Collab DK1 60%, covering its unique marble-like design, mounting options, acoustics, PCB, build experience, and typing feel.",
     "specs": "Layouts: Standard 60% / WKL / HHKB\nTop Case: CNC-machined aluminum\nBottom Case Options: Copper / Brass\nBack Plate Options: Aluminum / Copper\nPlate Options: Polycarbonate / FR4 / Aluminum\nPCB: 1.6 mm non-flex-cut\nPCB Socket: 5-pin hot-swap\nSwitch Orientation: South-facing\nRGB: No\nMounting: Plate gasket / PCB gasket / Hybrid\nWireless: 2.4 GHz\nPolling Rate: 1000 Hz\nBattery: 2400 mAh on final wireless PCB\nProgramming: QMK\nDaughterboard: Unified daughterboard with magnetic connector\nStabilizers: Plate-mounted, included\nCase Angle: 8°",
     "shard": "shard-1.json"
+  },
+  {
+    "id": "1789218112212",
+    "slug": "monka-3087-pro-v2",
+    "name": "Monka 3087 Pro V2",
+    "category": "Keyboards",
+    "price": "৳3,999 – ৳5,900",
+    "score": "8.7",
+    "image": "",
+    "hotDeal": false,
+    "description": "The Monka 3087 Pro V2 remains a strong budget TKL mechanical keyboard thanks to its solid switches, gasket mount, full sound, and wireless connectivity.",
+    "specs": "Layout: TKL\nCase Material: Plastic\nMounting: Gasket\nPlate: Polycarbonate\nPCB: 1.6 mm non-flex-cut\nHot-Swap: 5-pin\nRGB: North-facing\nConnectivity: Wired / Bluetooth / 2.4 GHz\nBattery: 4,000 mAh\nKeycaps: Cherry-profile double-shot\nSwitch Options: KD Wine Red / KD Higher Synth / Monka Sea Salt Tactile\nSoftware: Windows\nMac Mode: Supported\nQMK/VIA: Not supported\nTape Mod: Single-layer PCB tape mod",
+    "shard": "shard-1.json"
   }
 ]
