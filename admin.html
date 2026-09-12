@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Geek Shop | Lab Command Center</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: 'Inter', sans-serif; background-color: #0c1322; color: #dce2f7; overflow-x: hidden; }
+    h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+
+  <script id="tailwind-config">
+    tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container": "#191f2f", "surface-variant": "#2e3545", "surface-container-low": "#141b2b", "surface": "#0c1322", "outline": "#968e9a", "background": "#0c1322", "surface-container-lowest": "#070e1d", "on-surface": "#dce2f7", "primary": "#ecd7ff", "on-primary-fixed": "#29074a" } } } }
+  </script>
+</head>
+
+<body class="bg-background selection:bg-primary/30 min-h-screen flex flex-col">
+  <header class="bg-[#0c1322]/80 backdrop-blur-xl sticky top-0 z-[60] border-b border-white/5">
+    <div class="flex justify-between items-center px-6 lg:px-8 py-4 w-full max-w-screen-2xl mx-auto">
+      <div class="flex items-center gap-3 font-display text-xl font-bold tracking-tight text-white">
+        <span class="material-symbols-outlined text-primary">admin_panel_settings</span> Lab Command Center (Local)
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-xs text-outline hover:text-white transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-sm">storefront</span> Storefront</a>
+        <button id="logout-btn" class="hidden text-xs text-red-400 hover:text-red-300 transition-colors bg-red-900/20 px-4 py-2 rounded-lg font-bold uppercase tracking-widest">Disconnect</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 w-full max-w-screen-2xl mx-auto px-6 lg:px-8 py-8 lg:py-12">
+    <!-- LOGIN -->
+    <section id="login-section" class="max-w-md mx-auto mt-20 bg-surface-container border border-white/5 p-8 rounded-2xl shadow-2xl">
+      <div class="text-center mb-8">
+        <span class="material-symbols-outlined text-5xl text-primary mb-2">api</span>
+        <h2 class="text-2xl font-display font-bold">GitHub Backend</h2>
+        <p class="text-sm text-outline mt-1">Connect via Personal Access Token.</p>
+      </div>
+      <form id="login-form" class="space-y-4">
+        <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Personal Access Token</label><input type="password" id="gh-pat" required class="w-full bg-surface-container-low border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary/50 focus:ring-0"></div>
+        <button type="submit" class="w-full py-4 mt-4 bg-primary text-on-primary-fixed font-bold rounded-xl hover:shadow-[0_0_20px_rgba(236,215,255,0.2)] transition-all uppercase tracking-widest text-sm">Initialize Connection</button>
+      </form>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard-section" class="hidden h-full flex flex-col">
+      <div class="flex flex-col sm:flex-row justify-between gap-4 bg-surface-container-low p-3 rounded-xl border border-white/5 mb-6">
+        <div class="flex gap-2 p-1.5 bg-surface-container rounded-lg border border-white/5 w-fit">
+          <button id="tab-add" class="px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-lg bg-surface-container-low text-primary transition-all">Write Review</button>
+          <button id="tab-manage" class="px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-lg text-outline hover:text-slate-200 transition-all border border-transparent">Manage Posts</button>
+        </div>
+        <button id="sync-catalog-btn" class="px-5 py-2.5 bg-gradient-to-br from-purple-600 to-purple-800 text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all flex items-center gap-2"><span class="material-symbols-outlined text-sm">sync</span> Sync JSON</button>
+      </div>
+
+      <!-- ADD/EDIT FORM -->
+      <div id="view-add" class="bg-surface-container border border-white/5 rounded-2xl p-6 lg:p-8">
+        <h2 id="form-title" class="text-2xl font-display font-bold mb-6 text-primary">Post New Review</h2>
+        <form id="product-form" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6 p-6 bg-surface-container-low rounded-xl border border-white/5">
+            <div class="xl:col-span-2"><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Post Title</label><input id="p-name" required class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></div>
+            <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Category</label>
+              <select id="p-category" required class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2">
+                <option value="" disabled selected>Select...</option><option value="Keyboards">Keyboards</option><option value="Keycaps">Keycaps</option><option value="Switches">Switches</option><option value="Accessories">Accessories</option>
+              </select>
+            </div>
+            <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Price</label><input id="p-price" placeholder="e.g. $120.00" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></div>
+            <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Score (0-10)</label><input type="number" id="p-score" step="0.1" max="10" placeholder="Auto-calculated if Sub-Scores given" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 bg-surface-container-low rounded-xl border border-white/5">
+            <div class="space-y-4">
+              <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Card Description (Short)</label><textarea id="p-desc" rows="2" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></textarea></div>
+              <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Hero Summary / Meta</label><textarea id="p-meta-desc" rows="2" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></textarea></div>
+              <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Image URL (Just 1 Big Image)</label><input id="p-images" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2" placeholder="https://..."></div>
+            </div>
+            <div class="lg:col-span-2"><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Detailed Review (HTML Supported)</label><textarea id="p-detailed-desc" rows="11" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></textarea></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-surface-container-low rounded-xl border border-white/5">
+            <div><label class="block text-xs uppercase tracking-widest text-green-400 mb-1.5">Pros (One per line)</label><textarea id="p-pros" rows="4" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></textarea></div>
+            <div><label class="block text-xs uppercase tracking-widest text-red-400 mb-1.5">Cons (One per line)</label><textarea id="p-cons" rows="4" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></textarea></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-surface-container-low rounded-xl border border-white/5">
+            <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Specs (Key: Value)</label><textarea id="p-specs" rows="4" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2" placeholder="Switch: Linear&#10;Hotswap: Yes"></textarea></div>
+            <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Sub-Scores (Name: 9/10)</label><textarea id="p-subscores" rows="4" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2" placeholder="Functionality: 9/10&#10;Durability: 8/10"></textarea></div>
+            <div>
+              <label class="block text-xs uppercase tracking-widest text-outline mb-1.5 flex justify-between">
+                <span>Buy Links</span><span class="text-primary text-[10px] normal-case">(Name [space] [space] URL)</span>
+              </label>
+              <textarea id="p-merchants" rows="4" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2" placeholder="Amazon  https://amazon.com/..."></textarea>
+              <p class="text-[10px] text-outline mt-1">*Double space after name automatically inserts the '|' separator.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 bg-surface-container-low rounded-xl border border-white/5 items-start">
+            <div class="lg:col-span-2"><label class="block text-xs uppercase tracking-widest text-primary mb-1.5">Final Verdict</label><textarea id="p-verdict" rows="4" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></textarea></div>
+            <div class="space-y-4">
+              <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Author Name</label><input id="p-author-name" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2"></div>
+              <div><label class="block text-xs uppercase tracking-widest text-outline mb-1.5">Author Image URL</label><input id="p-author-image" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2" placeholder="https://..."></div>
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-outline mb-1.5 flex justify-between">
+                  <span>Author Socials</span><span class="text-primary text-[10px] normal-case">(Name [space] [space] URL)</span>
+                </label>
+                <textarea id="p-author-socials" rows="2" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-4 py-2" placeholder="Instagram  https://..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 px-2">
+            <input type="checkbox" id="p-hot" class="w-5 h-5 rounded border-white/20 bg-surface-container text-primary">
+            <label for="p-hot" class="text-sm font-bold uppercase tracking-widest">Flag as Top Pick</label>
+          </div>
+
+          <button type="submit" id="submit-btn" class="w-full py-4 bg-primary text-on-primary-fixed font-bold text-lg rounded-xl uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(236,215,255,0.2)]">Publish Post</button>
+        </form>
+      </div>
+
+      <!-- MANAGE VIEW -->
+      <div id="view-manage" class="hidden space-y-4">
+        <div id="admin-products-list" class="grid grid-cols-1 gap-4">
+          <div class="p-8 text-center text-outline"><span class="material-symbols-outlined animate-spin">sync</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <script type="module" src="script.js"></script>
+</body>
+</html>
